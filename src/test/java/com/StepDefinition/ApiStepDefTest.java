@@ -8,6 +8,8 @@ import io.cucumber.java.en.When;
 import io.restassured.response.Response;
 import org.testng.Assert;
 
+import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
+
 public class ApiStepDefTest {
     ApiService apiService ;
     Response response = null;
@@ -47,11 +49,13 @@ public class ApiStepDefTest {
 
     @And("the id should be generated")
     public void theIdShouldBeGenerated() {
-        //Assert.assertTrue(apiService.verifyId(postResponse));
+        Assert.assertTrue(apiService.verifyId(postResponse));
     }
 
     @And("verify schema with file {string}")
-    public void verifySchemaWithFile(String arg0) {
-      //  service.verifyResponseSchemaForPostUser(postResponse, pathTofile);
+    public void verifySchemaWithFile(String pathTofile) {
+        Assert.assertEquals(postResponse, matchesJsonSchemaInClasspath(pathTofile));
+
+      //  apiService.verifyResponseSchemaForPostUser(postResponse, pathTofile);
     }
 }
