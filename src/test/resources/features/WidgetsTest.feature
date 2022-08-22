@@ -1,3 +1,4 @@
+@Regression
 Feature: Execute the Web test cases of Widget menu for jquery UI
 
   Background:

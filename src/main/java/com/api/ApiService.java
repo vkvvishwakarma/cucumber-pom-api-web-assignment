@@ -3,8 +3,6 @@ package com.api;
 import io.restassured.RestAssured;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
-import org.json.JSONArray;
-import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -21,16 +19,20 @@ public class ApiService {
 
     public Response getUserPage(String page){
         Response response = null;
-
+/*
         JSONObject requestParams = new JSONObject();
         try {
             Map<String, String> queryParam = new HashMap<String, String>();
             queryParam.put("page", page);
             response = apiUtil.getUrlResponse(queryParam, "/users");
 
+
+
         }catch (Exception e){
                 e.printStackTrace();
         }
+
+ */
             return response;
     }
 
@@ -39,6 +41,7 @@ public class ApiService {
     public String getNameWithServiceId(Response response, int id){
         String firstName = "";
         try{
+            /*
             // System.out.println(response.prettyPrint());
             JSONObject requestParams = new JSONObject(response.getBody());
             JSONArray dataArray = requestParams.getJSONArray("data");
@@ -52,6 +55,8 @@ public class ApiService {
                     break;
                 }
             }
+
+             */
 
         }catch (Exception e){
             e.printStackTrace();
@@ -78,11 +83,13 @@ public class ApiService {
     public Response postUser (String name, String job) {
         Response response = null;
         try {
+            /*
             JSONObject json = new JSONObject();
             json.put("name", name);
             json.put("job", job);
             response = apiUtil.postReuqestWithBody(json.toString(), "/users");
 
+             */
         } catch (Exception e) {
             e.printStackTrace();
         }
